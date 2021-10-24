@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" class="h-100">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Finance</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href="../static.bootstrap/css/bootstrap-footer-navbar.css">
+</head>
+<body class="bg-light">
+<div th:insert="fragments/menu::menu"/>
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>Get Transaction</h2>
+    </div>
+
+    <div class="py-5 text-left">
+        <h2>Search Transaction by Id</h2>
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <label for="transactionId">Transaction ID</label>
+                <input type="text" id="transactionId" class="form-control" placeholder value required>
+            </div>
+        </div>
+        <div class="col-md-8 order-md-1">
+            <hr class="mb-4"/>
+            <button class="btn btn-dark btn-primary btn-block" id="submit">Submit research</button>
+        </div>
+    </div>
+    <div id="ajaxLoadedContent"></div>
+    <div th:if="${showResult}">
+        <div th:insert="fragments/result::result"/>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    $("#submit").on("click", function (respose) {
+        if($.trim($('#transactionId').val()) == ''){
+            $("#transactionId").focus;
+            alert('Transaction Id is required!');
+        } else {
+            $("#ajaxLoadedContent").load("/finance/transaction",
+                {"transactionId": $('#transactionId').val()});
+        }
+    });
+    /*]]>*/
+</script>
+</body>
+</html>

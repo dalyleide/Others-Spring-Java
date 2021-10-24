@@ -1,0 +1,14 @@
+<div th:fragment="result">
+    <div class="py-5 text-center">
+        <h2>Result</h2>
+        <div class="alert alert-info" role="alert" th:if="${not #strings.isEmpty(response)}">
+            <h3>Service Response Raw</h3><span th:text="${response}"/>
+        </div>
+        <div class="alert alert-success" role="alert" th:if="${object != null}">
+            <h3>Service Response Java Object:</h3><span th:text="${object}"></span>
+        </div>
+        <div class="alert alert-warning" role="alert" th:if="${not #strings.isEmpty(message)}">
+            <h3>Error Message:</h3><span th:text="${message}"></span>
+        </div>
+    </div>
+</div>

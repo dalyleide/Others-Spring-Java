@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Login - Finance</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous" />
+    <link rel="stylesheet" th:href="@{../static.bootstrap/css/bootstrap-signin.css}">
+</head>
+<body class="text-center">
+<div class="container-fluid text-center">
+    <div th:insert="fragments/error::error">  </div>
+    <form th:action="@{/login}" method="post" class="form-signin">
+
+        <h1 class="h3 mb-3 font-weight-normal">Access to Finance Control</h1>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input id="inputEmail" type="email" name="email" class="form-control" placeholder="E-mail" required autofocus/>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input id="inputPassword" type="password" name="password" class="form-control" placeholder="Password" required/>
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me">
+                 Remember-me
+            </label>
+        </div>
+        <p>
+            <input type="submit" value="Login" class="btn btn-primary btn-dark" />
+        </p>
+        <p class="mt-5 mb-3 text-muted">© 2021</p>
+    </form>
+</div>
+</body>
+</html>
